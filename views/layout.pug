@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Contact App
+    link(rel='stylesheet', href='/styles.css')
+  body
+    nav
+      if !user
+        a(href='/login') Login
+        a(href='/signup') Sign Up
+      else
+        span Welcome #{user.Username}
+        a(href='/logout') Logout
+    block content

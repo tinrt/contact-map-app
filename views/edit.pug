@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .container
+    h1 Edit Contact
+
+    if error
+      p.error= error
+
+    form(method='POST', action=`/contacts/${contact.ID}/edit`)
+      label Title:
+      select(name='title')
+        option(selected=contact.Title==='Mr.') Mr.
+        option(selected=contact.Title==='Mrs.') Mrs.
+        option(selected=contact.Title==='Ms.') Ms.
+        option(selected=contact.Title==='Dr.') Dr.
+
+      label First Name:
+      input(type='text', name='firstName', value=contact.FirstName, required)
+
+      label Last Name:
+      input(type='text', name='lastName', value=contact.LastName, required)
+
+      label Address:
+      input(type='text', name='address', value=contact.Address, required)
+
+      label Phone:
+      input(type='text', name='phone', value=contact.Phone, required)
+
+      label Email:
+      input(type='email', name='email', value=contact.Email, required)
+
+      label
+        input(type='checkbox', name='contactByEmail', checked=contact.Contact_By_Email) Contact by Email
+      label
+        input(type='checkbox', name='contactByPhone', checked=contact.Contact_By_Phone) Contact by Phone
+      label
+        input(type='checkbox', name='contactByMail', checked=contact.Contact_By_Mail) Contact by Mail
+
+      button(type='submit') Save Changes
+      a(href='/contacts') Cancel

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .container
+    h1 Login
+    if error
+      p.error= error
+    form(method='POST', action='/login')
+      label Username:
+      input(type='text', name='username', required)
+      label Password:
+      input(type='password', name='password', required)
+      button(type='submit') Login

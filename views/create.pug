@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .container
+    h1 Add New Contact
+
+    if error
+      p.error= error
+
+    form(method='POST', action='/contacts/new')
+      .form-group
+        label(for='title') Title:
+        select#title.form-control(name='title', required)
+          option(value='Mr.', selected=(form && form.title === 'Mr.')) Mr.
+          option(value='Mrs.', selected=(form && form.title === 'Mrs.')) Mrs.
+          option(value='Ms.', selected=(form && form.title === 'Ms.')) Ms.
+          option(value='Dr.', selected=(form && form.title === 'Dr.')) Dr.
+
+      .form-group
+        label(for='firstName') First Name:
+        input#firstName.form-control(type='text', name='firstName', value=(form && form.firstName) || '', required)
+
+      .form-group
+        label(for='lastName') Last Name:
+        input#lastName.form-control(type='text', name='lastName', value=(form && form.lastName) || '', required)
+
+      .form-group
+        label(for='address') Address:
+        input#address.form-control(type='text', name='address', value=(form && form.address) || '', required)
+
+      .form-group
+        label(for='phone') Phone:
+        input#phone.form-control(type='text', name='phone', value=(form && form.phone) || '', required)
+
+      .form-group
+        label(for='email') Email:
+        input#email.form-control(type='email', name='email', value=(form && form.email) || '', required)
+
+      fieldset
+        legend Contact Preferences
+        .checkbox-group
+          label
+            input(type='checkbox', name='contactByPhone', checked=(form && form.contactByPhone) ? true : false)
+            | Contact by Phone
+          label
+            input(type='checkbox', name='contactByEmail', checked=(form && form.contactByEmail) ? true : false)
+            | Contact by Email
+          label
+            input(type='checkbox', name='contactByMail', checked=(form && form.contactByMail) ? true : false)
+            | Contact by Mail
+
+      button(type='submit') Submit
+      a.btn(href='/contacts') Cancel

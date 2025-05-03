@@ -1,0 +1,343 @@
+
+
+:root {
+    --navy: #002b5c;
+    --green: #009e6d;
+    --light-green: #a1e887;
+    --background: #002b5c;
+    --text-dark: #ffffff;
+    --content-bg: #ffffff;
+    --content-text: #1a1a1a;
+}
+
+
+body {
+    background-color: var(--background);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+.container {
+    background-color: var(--content-bg);
+    color: var(--content-text);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 43, 92, 0.1);
+}
+
+
+.row {
+    margin-bottom: 1.5rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 0.5rem;
+}
+
+
+nav {
+    background-color: var(--navy);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: var(--light-green);
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 1.05rem;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+
+h1, h2, h3, legend {
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+    font-size: 1.8rem;
+}
+
+
+form {
+    background-color: var(--content-bg);
+    color: var(--content-text);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 43, 92, 0.1);
+    margin-bottom: 2rem;
+}
+
+form label {
+    font-weight: 600;
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+
+button,
+.btn {
+    background-color: var(--green);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 1rem;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #007b55;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--content-bg);
+    color: var(--content-text);
+    box-shadow: 0 1px 5px rgba(0, 43, 92, 0.1);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+th, td {
+    padding: 1.2rem;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: var(--navy);
+    color: #fff;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        background: var(--content-bg);
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        font-weight: bold;
+        color: var(--navy);
+        white-space: nowrap;
+    }
+}
+
+
+p.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: var(--content-bg);
+    color: var(--content-text);
+}
+
+a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #007b55;
+    text-decoration: underline;
+}
+
+
+
+
+form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.75rem;
+}
+
+form label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.2rem; 
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button,
+.btn {
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+
+
+form .form-group {
+    align-items: flex-start;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="number"] {
+    display: block;
+    margin-left: 0;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#map-container {
+    margin-top: 30px;
+    height: 500px;
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  
+  tr {
+    cursor: pointer;
+  }
+  
+  button:hover,
+.btn:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+tbody tr:hover {
+    background-color: #f4f8fb;
+  }
+ 
+  
+.card {
+    background-color: var(--content-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  select.form-control {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: white;
+    color: var(--content-text);
+  }
+  
+  .btn-add-contact {
+    display: inline-block;
+    margin-bottom: 3rem;
+  }
+  
+  
