@@ -3,17 +3,26 @@ extends layout
 block content
   .container
     h1 Sign Up
+
     if error
       p.error= error
+
     form(method='POST', action='/signup')
       label First Name:
       input(type='text', name='firstName', required)
+
       label Last Name:
       input(type='text', name='lastName', required)
+
       label Username:
       input(type='text', name='username', required)
+
       label Password:
       input(type='password', name='password', required)
+
       label Confirm Password:
       input(type='password', name='confirmPassword', required)
+
       button(type='submit') Sign Up
+
+    a.btn.mt-3(href='/contacts') ← Back to Home

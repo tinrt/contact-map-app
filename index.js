@@ -1,32 +1,47 @@
 const express = require('express');
-const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const db = require('./db');
 const app = express();
 
+// === View engine setup ===
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+// === Middleware ===
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use(session({
-    secret: 'secret-key',
-    resave: false,
-    saveUninitialized: false
+  secret: 'secret-key', // Change to secure secret in production
+  resave: false,
+  saveUninitialized: false
 }));
 
+// 🔧 Make user session available in all views
 app.use((req, res, next) => {
-    req.db = db;
-    next();
+  res.locals.user = req.session.user || null;
+  next();
 });
 
+// 🔧 Attach DB to request object
+app.use((req, res, next) => {
+  req.db = db;
+  next();
+});
+
+// === Routes ===
 app.use('/', require('./routes/auth'));
 app.use('/contacts', require('./routes/contacts'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', require('./routes/auth'));
 
+// Redirect root to contact list
 app.get('/', (req, res) => res.redirect('/contacts'));
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+// === Start Server ===
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
+});

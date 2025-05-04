@@ -8,34 +8,46 @@ block content
       p.error= error
 
     form(method='POST', action=`/contacts/${contact.ID}/edit`)
-      label Title:
-      select(name='title')
-        option(selected=contact.Title==='Mr.') Mr.
-        option(selected=contact.Title==='Mrs.') Mrs.
-        option(selected=contact.Title==='Ms.') Ms.
-        option(selected=contact.Title==='Dr.') Dr.
+      .form-group
+        label(for='title') Title:
+        select#title.form-control(name='title', required)
+          option(value='Mr.', selected=contact.Title === 'Mr.') Mr.
+          option(value='Mrs.', selected=contact.Title === 'Mrs.') Mrs.
+          option(value='Ms.', selected=contact.Title === 'Ms.') Ms.
+          option(value='Dr.', selected=contact.Title === 'Dr.') Dr.
 
-      label First Name:
-      input(type='text', name='firstName', value=contact.FirstName, required)
+      .form-group
+        label(for='firstName') First Name:
+        input#firstName.form-control(type='text', name='firstName', value=contact.FirstName, required)
 
-      label Last Name:
-      input(type='text', name='lastName', value=contact.LastName, required)
+      .form-group
+        label(for='lastName') Last Name:
+        input#lastName.form-control(type='text', name='lastName', value=contact.LastName, required)
 
-      label Address:
-      input(type='text', name='address', value=contact.Address, required)
+      .form-group
+        label(for='address') Address:
+        input#address.form-control(type='text', name='address', value=contact.Address, required)
 
-      label Phone:
-      input(type='text', name='phone', value=contact.Phone, required)
+      .form-group
+        label(for='phone') Phone:
+        input#phone.form-control(type='text', name='phone', value=contact.Phone, required)
 
-      label Email:
-      input(type='email', name='email', value=contact.Email, required)
+      .form-group
+        label(for='email') Email:
+        input#email.form-control(type='email', name='email', value=contact.Email, required)
 
-      label
-        input(type='checkbox', name='contactByEmail', checked=contact.Contact_By_Email) Contact by Email
-      label
-        input(type='checkbox', name='contactByPhone', checked=contact.Contact_By_Phone) Contact by Phone
-      label
-        input(type='checkbox', name='contactByMail', checked=contact.Contact_By_Mail) Contact by Mail
+      fieldset
+        legend Contact Preferences
+        .checkbox-group
+          label
+            input(type='checkbox', name='contactByPhone', checked=contact.Contact_By_Phone ? true : false)
+            |  Contact by Phone
+          label
+            input(type='checkbox', name='contactByEmail', checked=contact.Contact_By_Email ? true : false)
+            |  Contact by Email
+          label
+            input(type='checkbox', name='contactByMail', checked=contact.Contact_By_Mail ? true : false)
+            |  Contact by Mail
 
       button(type='submit') Save Changes
-      a(href='/contacts') Cancel
+      a.btn(href='/contacts') Cancel
