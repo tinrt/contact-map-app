@@ -9,9 +9,10 @@ block content
     else
       p.text-muted You are not logged in. You can still view and add contacts, but cannot edit or delete them.
 
-
     a.btn.btn-success(style='display: inline-block; margin-bottom: 1rem;', href='/contacts/new') Add New Contact
+
     h3.mt-4.mb-2 Search for Contact
+
     form#searchForm.mb-4(style='display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;')
       .form-group(style='flex: 1 1 200px;')
         label(for='firstSearch') First Name:
@@ -21,53 +22,54 @@ block content
         label(for='lastSearch') Last Name:
         input#lastSearch.form-control(type='text', placeholder='e.g. Smith')
 
-    table.table.table-bordered.table-striped
-      thead
-        tr
-          th Name
-          th Phone
-          th Email
-          th Address
-          th Contact Preferences
-          th Latitude
-          th Longitude
-          th Actions
-      tbody
-        each contact in contacts
-          tr(data-lat=contact.Lat, data-lng=contact.Lng, onclick='onRowClick(event)')
-            td #{contact.Title} #{contact.FirstName} #{contact.LastName}
-            td #{contact.Phone}
-            td #{contact.Email}
-            td #{contact.Address}
-            td
-              if contact.Contact_By_Email
-                span Email
-              if contact.Contact_By_Phone
-                span &nbsp;| Phone
-              if contact.Contact_By_Mail
-                span &nbsp;| Mail
-            td #{contact.Lat}
-            td #{contact.Lng}
-            td
-              if user
-                a.btn.btn-sm.btn-outline-primary(href=`/contacts/${contact.ID}/edit`) Edit
-                a.btn.btn-sm.btn-outline-danger.ms-2(href=`/contacts/${contact.ID}/delete`) Delete
-              else
-                span.text-muted Login to edit/delete
+      .form-group(style='flex: 0 0 auto;')
+        label &nbsp;
+        button#searchBtn.btn.btn-outline-primary(type='button') Search
 
-    // 🗺️ Map Section
+    .table-responsive
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th Name
+            th Phone
+            th Email
+            th Address
+            th Contact Preferences
+            th Latitude
+            th Longitude
+            th Actions
+        tbody
+          each contact in contacts
+            tr(data-lat=contact.Lat, data-lng=contact.Lng, onclick='onRowClick(event)')
+              td #{contact.Title} #{contact.FirstName} #{contact.LastName}
+              td #{contact.Phone}
+              td #{contact.Email}
+              td #{contact.Address}
+              td
+                if contact.Contact_By_Email
+                  span Email
+                if contact.Contact_By_Phone
+                  span &nbsp;| Phone
+                if contact.Contact_By_Mail
+                  span &nbsp;| Mail
+              td #{contact.Lat}
+              td #{contact.Lng}
+              td
+                if user
+                  a.btn.btn-sm.btn-outline-primary(href=`/contacts/${contact.ID}/edit`) Edit
+                  a.btn.btn-sm.btn-outline-danger.ms-2(href=`/contacts/${contact.ID}/delete`) Delete
+                else
+                  span.text-muted Login to edit/delete
+
     #map-container
       #map
 
-  // External Scripts
   script(src='https://unpkg.com/leaflet@1.9.3/dist/leaflet.js')
   script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
   script(src='/main.js')
 
-  // External Styles
   link(rel='stylesheet', href='https://unpkg.com/leaflet@1.9.3/dist/leaflet.css')
 
-  // Inline Styles
   style.
     #map-container {
       margin-top: 30px;

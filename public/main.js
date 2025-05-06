@@ -1,5 +1,4 @@
-// Initialize map
-let map = L.map('map').setView([40.75, -74.0], 4); // Default US view
+let map = L.map('map').setView([40.75, -74.0], 4); 
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
@@ -8,7 +7,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 let markers = [];
 
-// Add markers and bind popups
+
 document.addEventListener('DOMContentLoaded', () => {
   const rows = document.querySelectorAll("tbody tr");
   rows.forEach(row => {
@@ -24,13 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Live search input listeners
+
   document.getElementById('firstSearch').addEventListener('input', filterContacts);
   document.getElementById('lastSearch').addEventListener('input', filterContacts);
   document.getElementById('searchBtn').addEventListener('click', filterContacts);
 });
 
-// Handle table row click to pan to location
 function onRowClick(e) {
   const tr = e.target.closest("tr");
   const lat = parseFloat(tr.dataset.lat);
@@ -41,7 +39,6 @@ function onRowClick(e) {
   }
 }
 
-// Filter table rows by name fields
 function filterContacts() {
   const firstQuery = document.getElementById('firstSearch').value.toLowerCase();
   const lastQuery = document.getElementById('lastSearch').value.toLowerCase();

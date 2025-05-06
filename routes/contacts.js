@@ -66,7 +66,6 @@ router.post('/new', async (req, res) => {
     });
 });
 
-// GET /contacts/:id/edit → show edit form
 router.get('/:id/edit',requireLogin, (req, res) => {
     const id = req.params.id;
     req.db.get("SELECT * FROM Contact WHERE ID = ?", [id], (err, contact) => {
@@ -75,7 +74,6 @@ router.get('/:id/edit',requireLogin, (req, res) => {
     });
 });
 
-// POST /contacts/:id/edit → update contact
 router.post('/:id/edit',requireLogin, async (req, res) => {
     const id = req.params.id;
     const {
@@ -115,7 +113,6 @@ router.post('/:id/edit',requireLogin, async (req, res) => {
     });
 });
 
-// GET /contacts/:id/delete → confirm deletion
 router.get('/:id/delete',requireLogin, (req, res) => {
     const id = req.params.id;
     req.db.get("SELECT * FROM Contact WHERE ID = ?", [id], (err, contact) => {
@@ -124,7 +121,6 @@ router.get('/:id/delete',requireLogin, (req, res) => {
     });
 });
 
-// POST /contacts/:id/delete → perform deletion
 router.post('/:id/delete',requireLogin, (req, res) => {
     const id = req.params.id;
     req.db.run("DELETE FROM Contact WHERE ID = ?", [id], err => {
